@@ -1,0 +1,5 @@
+package com.idat.laterraza.entity;
+
+public class Producto {
+
+}
