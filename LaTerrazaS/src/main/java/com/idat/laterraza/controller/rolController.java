@@ -16,7 +16,7 @@ import com.idat.laterraza.service.IRolService;
 
 @CrossOrigin(origins= {"http://localhost/4200"})
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/apii")
 public class rolController {
 	@Autowired
 	private IRolService rolService;

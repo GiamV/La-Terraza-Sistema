@@ -30,4 +30,5 @@ public class Rol {
 		return serialVersionUID;
 	}
 	
+	
 }
