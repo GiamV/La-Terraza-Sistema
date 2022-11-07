@@ -1,0 +1,20 @@
+package com.idat.laterraza.service;
+
+import java.util.List;
+
+
+import com.idat.laterraza.entity.DetalleVenta;
+
+public interface IDetalleVentaService {
+	//DATA ACCESS OBJECT
+		public List<DetalleVenta> findAll();
+		
+		//CREAR METODO PARA AGREGAR:
+		public void save(DetalleVenta detalleVenta);
+		
+		//CREAR METODO PARA EDITAR:
+		public DetalleVenta editarDetalleVenta(Long id);
+		
+		//CREAR METODO PARA ELIMINAR:
+		public void eliminarDetalleVenta(Long id);
+}
