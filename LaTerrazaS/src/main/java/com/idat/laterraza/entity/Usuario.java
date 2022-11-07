@@ -16,8 +16,10 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idUsuario;
+	private String nombre;
+	private String apellido;
 	private String usuario;
-	private String contraseña;
+	private String contrasena;
 	private String sexo;
 	private String direccion;
 	private String telefono;
@@ -34,6 +36,31 @@ public class Usuario {
 	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
+	
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
 
 	public String getUsuario() {
 		return usuario;
@@ -43,13 +70,6 @@ public class Usuario {
 		this.usuario = usuario;
 	}
 
-	public String getContraseña() {
-		return contraseña;
-	}
-
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
-	}
 
 	public String getSexo() {
 		return sexo;

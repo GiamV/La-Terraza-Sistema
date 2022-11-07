@@ -27,7 +27,7 @@ public class CabeceraVenta {
 	@Temporal(TemporalType.DATE)
 	private Date fechamat;
 	
-	private String estado;
+	private int estado;
 
 	public Long getIdCabecera() {
 		return idCabecera;
@@ -69,11 +69,11 @@ public class CabeceraVenta {
 		this.fechamat = fechamat;
 	}
 
-	public String getEstado() {
+	public int getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(int estado) {
 		this.estado = estado;
 	}
 

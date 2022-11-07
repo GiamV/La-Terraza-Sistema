@@ -16,6 +16,7 @@ public class Producto {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idProducto;
 	private String producto;
+	private String imagen;
 	private float precio;
 	private int estado;
 	@ManyToOne
@@ -32,6 +33,13 @@ public class Producto {
 	}
 	public void setProducto(String producto) {
 		this.producto = producto;
+	}
+	
+	public String getImagen() {
+		return imagen;
+	}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 	public float getPrecio() {
 		return precio;
