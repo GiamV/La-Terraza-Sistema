@@ -17,4 +17,6 @@ public interface IDetalleVentaService {
 		
 		//CREAR METODO PARA ELIMINAR:
 		public void eliminarDetalleVenta(Long id);
+		
+		public DetalleVenta findById(Long id);
 }

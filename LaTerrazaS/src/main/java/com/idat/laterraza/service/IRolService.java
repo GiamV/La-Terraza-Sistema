@@ -9,6 +9,8 @@ public interface IRolService {
 	//DATA ACCESS OBJECT
 	public List<Rol> findAll();
 	
+	public Rol findById (Long id);
+	
 	//CREAR METODO PARA AGREGAR:
 	public void save(Rol rol);
 	

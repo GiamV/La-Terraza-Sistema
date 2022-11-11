@@ -41,6 +41,11 @@ public class IDetalleVentaServiceImpl implements IDetalleVentaService {
 		detalleVentaDao.deleteById(id);
 		
 	}
+	@Override
+	public DetalleVenta findById(Long id) {
+		// TODO Auto-generated method stub
+		return detalleVentaDao.findById(id).orElse(null);
+	}
 
 	
 

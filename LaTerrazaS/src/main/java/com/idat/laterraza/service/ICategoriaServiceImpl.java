@@ -41,5 +41,9 @@ public class ICategoriaServiceImpl implements ICategoriaService {
 		categoriaDao.deleteById(id);
 		
 	}
+	@Override
+	public Categoria findById(Long id) {
+		return categoriaDao.findById(id).orElse(null);
+	}
 
 }

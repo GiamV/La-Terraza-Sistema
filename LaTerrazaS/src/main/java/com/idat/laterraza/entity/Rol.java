@@ -14,6 +14,9 @@ public class Rol {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idRol;
 	private String rol;
+	
+	
+	
 	public Long getIdRol() {
 		return idRol;
 	}

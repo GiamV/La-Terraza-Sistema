@@ -17,4 +17,6 @@ public interface ICabeceraVentaService {
 			
 			//CREAR METODO PARA ELIMINAR:
 			public void eliminarCabeceraVenta(Long id);
+			
+			public CabeceraVenta findById(Long id);
 }

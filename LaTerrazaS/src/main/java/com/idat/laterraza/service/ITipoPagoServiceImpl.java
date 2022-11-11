@@ -41,5 +41,9 @@ public class ITipoPagoServiceImpl implements ITipoPagoService {
 		tipoPagoDao.deleteById(id);
 		
 	}
+	@Override
+	public TipoPago findById(Long id) {
+		return tipoPagoDao.findById(id).orElse(null);
+	}
 
 }

@@ -40,5 +40,10 @@ public class ICabeceraVentaServiceImpl implements ICabeceraVentaService {
 		cabeceraVentaDao.deleteById(id);
 		
 	}
+	@Override
+	public CabeceraVenta findById(Long id) {
+		// TODO Auto-generated method stub
+		return cabeceraVentaDao.findById(id).orElse(null);
+	}
 
 }

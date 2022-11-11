@@ -41,5 +41,10 @@ public class IUsuarioServiceImpl implements IUsuarioService {
 		usuarioDao.deleteById(id);
 		
 	}
+	@Override
+	public Usuario findById(Long id) {
+		return usuarioDao.findById(id).orElse(null);
+		
+	}
 
 }
