@@ -17,4 +17,6 @@ public interface IUsuarioService {
 			
 			//CREAR METODO PARA ELIMINAR:
 			public void eliminarUsuario(Long id);
+			
+			public Usuario findById(Long id);
 }

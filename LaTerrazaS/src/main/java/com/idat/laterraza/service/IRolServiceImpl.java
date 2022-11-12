@@ -23,8 +23,9 @@ public class IRolServiceImpl implements IRolService {
 		
 		return (List<Rol>)rolDao.findAll();
 	}
-	@Transactional
+	
 	@Override
+	@Transactional
 	public void save(Rol rol) {
 		rolDao.save(rol);
 		
@@ -39,6 +40,12 @@ public class IRolServiceImpl implements IRolService {
 	@Override
 	public void eliminarRol(Long id) {
 		rolDao.deleteById(id);
+		
+	}
+
+	@Override
+	public Rol findById(Long id) {
+		return rolDao.findById(id).orElse(null);
 		
 	}
 

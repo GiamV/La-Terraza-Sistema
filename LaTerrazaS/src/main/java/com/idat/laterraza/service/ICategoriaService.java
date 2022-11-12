@@ -17,4 +17,6 @@ public interface ICategoriaService {
 	
 	//CREAR METODO PARA ELIMINAR:
 	public void eliminarCategoria(Long id);
+	
+	public Categoria findById(Long id);
 }

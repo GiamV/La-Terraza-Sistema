@@ -17,4 +17,6 @@ public interface IProductoService {
 			
 			//CREAR METODO PARA ELIMINAR:
 			public void eliminarProducto(Long id);
+			
+			public Producto findById(Long id);
 }

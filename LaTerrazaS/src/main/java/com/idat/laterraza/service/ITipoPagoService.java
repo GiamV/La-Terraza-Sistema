@@ -17,4 +17,6 @@ public interface ITipoPagoService {
 		
 		//CREAR METODO PARA ELIMINAR:
 		public void eliminarTipoPago(Long id);
+		
+		public TipoPago findById(Long id);
 }
