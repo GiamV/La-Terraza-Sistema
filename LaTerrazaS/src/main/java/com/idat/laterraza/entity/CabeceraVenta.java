@@ -80,9 +80,6 @@ public class CabeceraVenta {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
-	
-	
+
 	
 }
