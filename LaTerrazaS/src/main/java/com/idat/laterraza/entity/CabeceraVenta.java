@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,6 +28,14 @@ public class CabeceraVenta {
 	@Column(name="fecha_venta")
 	@Temporal(TemporalType.DATE)
 	private Date fechamat;
+	
+	@ManyToOne
+	@JoinColumn(name="idUsuario")
+	Usuario usuario;
+	
+	@ManyToOne
+	@JoinColumn(name="idTipoPago")
+	TipoPago tipoPago;
 	
 	private int estado;
 
@@ -75,6 +85,23 @@ public class CabeceraVenta {
 
 	public void setEstado(int estado) {
 		this.estado = estado;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+
+	public TipoPago getTipoPago() {
+		return tipoPago;
+	}
+
+	public void setTipoPago(TipoPago tipoPago) {
+		this.tipoPago = tipoPago;
 	}
 
 	public static long getSerialversionuid() {

@@ -15,6 +15,7 @@ public class Categoria {
 	
 	private Long idCategoria;
 	private String categoria;
+	private int estado;
 	public Long getIdCategoria() {
 		return idCategoria;
 	}
@@ -27,6 +28,14 @@ public class Categoria {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+	
+	public int getEstado() {
+		return estado;
+	}
+	public void setEstado(int estado) {
+		this.estado = estado;
+	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

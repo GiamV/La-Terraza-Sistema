@@ -50,7 +50,8 @@ public class detalleController {
 		detalleActual.setProducto(detalle.getProducto());
 		detalleActual.setCantidad(detalle.getCantidad());
 		detalleActual.setCabecera(detalle.getCabecera());
-		detalleActual.setSubtotal(detalle.getSubtotal());
+		detalleActual.setPrecio(detalle.getPrecio());
+		detalleActual.setEstado(detalle.getEstado());
 	
 		detalleService.save(detalleActual);
 		return detalleService.findById(id);

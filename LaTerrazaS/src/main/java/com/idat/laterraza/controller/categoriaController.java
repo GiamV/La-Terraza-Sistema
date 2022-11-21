@@ -48,6 +48,7 @@ public class categoriaController {
 	public Categoria actualizar(@RequestBody Categoria categoria,@PathVariable Long id) {
 		Categoria categoriaActual=categoriaService.findById(id);
 		categoriaActual.setCategoria(categoria.getCategoria());
+		categoriaActual.setEstado(categoria.getEstado());
 		
 		categoriaService.save(categoriaActual);
 		return categoriaService .findById(id);

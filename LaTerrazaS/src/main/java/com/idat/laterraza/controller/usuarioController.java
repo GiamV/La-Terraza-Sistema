@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.idat.laterraza.entity.Usuario;
 import com.idat.laterraza.service.IUsuarioService;
+import com.idat.laterraza.serviceR.UsuarioServiceIm;
 
 @CrossOrigin(origins= {"http://localhost/4200"})
 @RestController
@@ -22,6 +23,9 @@ public class usuarioController {
 
 	@Autowired
 	private IUsuarioService usuarioService;
+	
+	@Autowired
+	private UsuarioServiceIm userService;
 	
 	//LISTAR USUARIOS
 	@GetMapping("/usuarios")
@@ -35,11 +39,30 @@ public class usuarioController {
 		return usuarioService.findById(id);
 	}
 	
+	@GetMapping("/{user}/{passw}")
+	public int verificacion(@PathVariable String user,@PathVariable String passw) {
+		if(userService.findByU(user)!=null) {
+			if(userService.iniciosesion(user,passw)!=null) {
+				return 1;
+			}else {
+				return 2;
+			}
+		}else {
+			return 3;
+		}
+	}
+	
+	@GetMapping("/{user}")
+	public Usuario findByUser(@PathVariable String user) {
+		return userService.findByU(user);
+		
+	}
+	
 	//CREAR UN NUEVO USUARIO
 	@PostMapping("/usuarionew")
 	public Usuario usuarionew (@RequestBody Usuario usuario) {
 		usuarioService.save(usuario);
-		return usuarioService.findById(null);
+		return usuarioService.findById(usuario.getIdUsuario());
 	}
 	
 	//ACTUALIZAR USUARIO
@@ -54,7 +77,7 @@ public class usuarioController {
 		usuarioActual.setDireccion(usuario.getDireccion());
 		usuarioActual.setTelefono(usuario.getTelefono());
 		usuarioActual.setDni(usuario.getDni());
-		
+		usuarioActual.setEstado(usuario.getEstado());
 		usuarioService.save(usuarioActual);
 		return usuarioService.findById(id);
 	}

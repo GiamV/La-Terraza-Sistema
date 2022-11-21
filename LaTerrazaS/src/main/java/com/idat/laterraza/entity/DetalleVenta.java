@@ -17,13 +17,15 @@ public class DetalleVenta {
 	
 	private Long idDetalleVenta;
 	private int cantidad;
-	private float subtotal;
+	private float precio;
 	@ManyToOne
 	@JoinColumn(name="IdProducto")
 	Producto producto;
 	@ManyToOne
 	@JoinColumn(name="IdCabecera")
 	CabeceraVenta cabecera;
+	
+	private int estado;
 	
 	public Long getIdDetalleVenta() {
 		return idDetalleVenta;
@@ -37,11 +39,12 @@ public class DetalleVenta {
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-	public float getSubtotal() {
-		return subtotal;
+	
+	public float getPrecio() {
+		return precio;
 	}
-	public void setSubtotal(float subtotal) {
-		this.subtotal = subtotal;
+	public void setPrecio(float precio) {
+		this.precio = precio;
 	}
 	public Producto getProducto() {
 		return producto;
@@ -54,6 +57,13 @@ public class DetalleVenta {
 	}
 	public void setCabecera(CabeceraVenta cabecera) {
 		this.cabecera = cabecera;
+	}
+	
+	public int getEstado() {
+		return estado;
+	}
+	public void setEstado(int estado) {
+		this.estado = estado;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;

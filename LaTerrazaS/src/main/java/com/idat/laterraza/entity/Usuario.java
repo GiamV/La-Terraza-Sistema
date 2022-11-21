@@ -24,6 +24,7 @@ public class Usuario {
 	private String direccion;
 	private String telefono;
 	private String dni;
+	private int estado;
 	
 	@ManyToOne
 	@JoinColumn(name="IdRol")
@@ -109,6 +110,16 @@ public class Usuario {
 
 	public void setRol(Rol rol) {
 		this.rol = rol;
+	}
+
+	
+
+	public int getEstado() {
+		return estado;
+	}
+
+	public void setEstado(int estado) {
+		this.estado = estado;
 	}
 
 	public static long getSerialversionuid() {

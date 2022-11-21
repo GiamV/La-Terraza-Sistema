@@ -15,6 +15,7 @@ public class TipoPago {
 	
 	private Long idTipoPago;
 	private String TipoPago;
+	
 	public Long getIdTipoPago() {
 		return idTipoPago;
 	}
