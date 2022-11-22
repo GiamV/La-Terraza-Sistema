@@ -25,6 +25,16 @@ public class CabeceraVenta {
 	private float igv;
 	private float neto;
 	
+	private String tipoCabecera;
+	
+	public String getTipoCabecera() {
+		return tipoCabecera;
+	}
+
+	public void setTipoCabecera(String tipoCabecera) {
+		this.tipoCabecera = tipoCabecera;
+	}
+
 	@Column(name="fecha_venta")
 	@Temporal(TemporalType.DATE)
 	private Date fechamat;

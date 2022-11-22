@@ -14,7 +14,7 @@ public class TipoPago {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	
 	private Long idTipoPago;
-	private String TipoPago;
+	private String tipoPago;
 	
 	public Long getIdTipoPago() {
 		return idTipoPago;
@@ -22,11 +22,12 @@ public class TipoPago {
 	public void setIdTipoPago(Long idTipoPago) {
 		this.idTipoPago = idTipoPago;
 	}
+
 	public String getTipoPago() {
-		return TipoPago;
+		return tipoPago;
 	}
 	public void setTipoPago(String tipoPago) {
-		TipoPago = tipoPago;
+		this.tipoPago = tipoPago;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;

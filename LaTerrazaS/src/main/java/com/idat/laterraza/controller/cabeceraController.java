@@ -53,6 +53,7 @@ public class cabeceraController {
 		cabeceraActual.setFechamat(cabecera.getFechamat());
 		cabeceraActual.setEstado(cabecera.getEstado());
 		cabeceraActual.setTipoPago(cabecera.getTipoPago());
+		cabeceraActual.setTipoCabecera(cabecera.getTipoCabecera());
 		
 		cabeceraService.save(cabeceraActual);
 		return cabeceraService.findById(id);
