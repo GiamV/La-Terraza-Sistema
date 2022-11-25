@@ -19,4 +19,5 @@ public interface IDetalleVentaService {
 		public void eliminarDetalleVenta(Long id);
 		
 		public DetalleVenta findById(Long id);
+		
 }
