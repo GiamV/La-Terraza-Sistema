@@ -1,5 +1,6 @@
 package com.idat.laterraza.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,22 @@ public class detalleController {
 	@DeleteMapping("/detalledelete/{id}")
 	public void delete(@PathVariable Long id) {
 		detalleService.eliminarDetalleVenta(id);
+	}
+	
+	//TRAER DETALLE POR CARRITO DE COMPRAS
+	@GetMapping("/detalleCarrito/{idUsuario}")
+	public List<DetalleVenta> listarDetalle (@PathVariable Long idUsuario) {
+		List<DetalleVenta> listaDetalle=detalleService.findAll();
+		ArrayList<DetalleVenta> ListaCarrito= new ArrayList<DetalleVenta>();
+		
+		
+		for(int i=0;i<listaDetalle.size();i++) {
+			if (listaDetalle.get(i).getCabecera().getTipoCabecera().equals("Carrito")&&listaDetalle.get(i).getCabecera().getUsuario().getIdUsuario().equals(idUsuario)) {
+				ListaCarrito.add(listaDetalle.get(i));
+			}
+		}
+		
+		return ListaCarrito;
 	}
 
 }

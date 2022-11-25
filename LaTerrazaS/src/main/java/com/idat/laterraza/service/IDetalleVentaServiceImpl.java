@@ -47,6 +47,5 @@ public class IDetalleVentaServiceImpl implements IDetalleVentaService {
 		return detalleVentaDao.findById(id).orElse(null);
 	}
 
-	
 
 }
