@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.idat.laterraza.entity.Producto;
 import com.idat.laterraza.service.IProductoService;
+import com.idat.laterraza.serviceR.CategoriaServiceIm;
 
 @CrossOrigin(origins= {"http://localhost/4200"})
 @RestController
@@ -23,12 +24,20 @@ public class productoController {
 	
 	@Autowired
 	private IProductoService productoService;
+	@Autowired
+	private CategoriaServiceIm productoS;
 	
 	//LISTAR PRODUCTOS
 	@GetMapping("/productos")
 	public List<Producto> listar(){
 		return productoService.findAll();
 	}
+	
+	//LISTAR PRODUCTOS
+		@GetMapping("/productoscat/{id}")
+		public List<Producto> listarbycodcat(@PathVariable Long id){
+			return productoS.findByCate(id);
+		}
 	
 	//BUSCAR PRODUCTO POR ID
 	@GetMapping("/producto/{id}")
