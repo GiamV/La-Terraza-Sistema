@@ -10,6 +10,7 @@ import com.idat.laterraza.entity.Producto;
 
 
 public interface IProductoRepository extends JpaRepository<Producto, Long> {
+	
 	@Query(value= "{call buscar_pro_cat(:xcodcat)}",nativeQuery=true)
 	List<Producto> findByCat(@Param("xcodcat")Long xcodcat);
 }

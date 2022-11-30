@@ -17,6 +17,7 @@ public class Producto {
 	private Long idProducto;
 	private String producto;
 	private String imagen;
+	private String descripcion;
 	private float precio;
 	private int estado;
 	@ManyToOne
@@ -40,6 +41,13 @@ public class Producto {
 	}
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
+	}
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	public float getPrecio() {
 		return precio;
