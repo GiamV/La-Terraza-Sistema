@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.idat.laterraza.entity.CabeceraVenta;
 import com.idat.laterraza.service.ICabeceraVentaService;
+import com.idat.laterraza.service.ICabeceraVentaServiceImpl;
 
 @CrossOrigin(origins= {"http://localhost/4200"})
 @RestController
@@ -64,5 +65,26 @@ public class cabeceraController {
 	public void delete(@PathVariable Long id) {
 		cabeceraService.eliminarCabeceraVenta(id);
 	}
+	
+	//LISTAR CABECERA DE CARRITO DE COMPRAS
+	@GetMapping("cabeceraCarrito/{idUser}")
+	public CabeceraVenta carrito(@PathVariable Long idUser) {
+		List<CabeceraVenta> listaCabecera=cabeceraService.findAll();
+		
+		CabeceraVenta cabe=new CabeceraVenta();
+		for (int i=0;i<listaCabecera.size();i++) {
+			if(listaCabecera.get(i).getTipoCabecera().equals("Carrito") && 
+			listaCabecera.get(i).getUsuario().getIdUsuario().equals(idUser)) {
+				
+				 cabe=listaCabecera.get(i);
+				 break;
+			}
+		}
+		
+		return cabe;
+		
+	}
+	
+	
 
 }

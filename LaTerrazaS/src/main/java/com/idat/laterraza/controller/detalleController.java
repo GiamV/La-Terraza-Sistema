@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.idat.laterraza.entity.CabeceraVenta;
 import com.idat.laterraza.entity.DetalleVenta;
+import com.idat.laterraza.service.ICabeceraVentaService;
 import com.idat.laterraza.service.IDetalleVentaService;
+import com.idat.laterraza.service.IUsuarioService;
 
 @CrossOrigin(origins= {"http://localhost/4200"})
 @RestController
@@ -24,6 +27,13 @@ public class detalleController {
 	
 	@Autowired
 	private IDetalleVentaService detalleService;
+	
+	@Autowired
+	private ICabeceraVentaService cabeceraService;
+	
+	@Autowired
+	private IUsuarioService usuarioService;
+	
 	
 	//LISTAR DETALLES
 	@GetMapping("/detalles")
@@ -41,6 +51,10 @@ public class detalleController {
 	@PostMapping("/detallenew")
 	public DetalleVenta detallenew(@RequestBody DetalleVenta detalle) {
 		detalleService.save(detalle);
+		
+		CabeceraVenta cabe=cabeceraService.findById(detalle.getCabecera().getIdCabecera());
+		actualizarCabecera(cabe.getIdCabecera());
+		
 		return detalleService.findById(detalle.getIdDetalleVenta()); 
 	}
 	
@@ -67,17 +81,58 @@ public class detalleController {
 	//TRAER DETALLE POR CARRITO DE COMPRAS
 	@GetMapping("/detalleCarrito/{idUsuario}")
 	public List<DetalleVenta> listarDetalle (@PathVariable Long idUsuario) {
+		
+		
 		List<DetalleVenta> listaDetalle=detalleService.findAll();
 		ArrayList<DetalleVenta> ListaCarrito= new ArrayList<DetalleVenta>();
 		
 		
 		for(int i=0;i<listaDetalle.size();i++) {
-			if (listaDetalle.get(i).getCabecera().getTipoCabecera().equals("Carrito")&&listaDetalle.get(i).getCabecera().getUsuario().getIdUsuario().equals(idUsuario)) {
+			
+			
+			//cabeceraService.findById(listaDetalle.get(i).getCabecera().getIdCabecera());
+			if ((cabeceraService.findById(listaDetalle.get(i).getCabecera().getIdCabecera())).getTipoCabecera().equals("Carrito")&&
+			(usuarioService.findById(cabeceraService.findById(listaDetalle.get(i).getCabecera().getIdCabecera()).getUsuario().getIdUsuario()).getIdUsuario().equals(idUsuario))) {
 				ListaCarrito.add(listaDetalle.get(i));
 			}
 		}
 		
 		return ListaCarrito;
+	}
+	
+	//ACTUALIZAR CANTIDAD DE PRODUCTO
+	@PutMapping("/detalleCarrito/{id}")
+	public void updateCant(@PathVariable Long id,@RequestBody DetalleVenta det) {
+		DetalleVenta detalleActual=detalleService.findById(id);
+		detalleActual.setCantidad(det.getCantidad());
+		detalleService.save(detalleActual);
+		
+		actualizarCabecera(detalleActual.getCabecera().getIdCabecera());
+		
+	}
+	
+	//ELIMINAR DETALLE DE VENTA
+	@DeleteMapping("detalleCarritodelete/{id}")
+	public void deleteCarrito(@PathVariable Long id) {
+		detalleService.eliminarDetalleVenta(id);
+	}
+	
+
+	public void actualizarCabecera(Long idCabecera) {
+		CabeceraVenta cabecera=cabeceraService.findById(idCabecera);
+
+		List<DetalleVenta> listaDetalles=listarDetalle(cabecera.getUsuario().getIdUsuario());
+		
+		float bruto=0;
+		for(int i=0;i<listaDetalles.size();i++) {
+			DetalleVenta detalle=listaDetalles.get(i);
+			bruto=bruto+(detalle.getCantidad()*detalle.getPrecio());
+		}
+		cabecera.setBruto(bruto);
+		cabecera.setIgv( (float) (bruto*0.18));
+		cabecera.setNeto(bruto+cabecera.getIgv());
+		cabeceraService.save(cabecera);
+		
 	}
 
 }
