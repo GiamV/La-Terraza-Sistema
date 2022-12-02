@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.idat.laterraza.entity.Usuario;
+import com.idat.laterraza.service.ICabeceraVentaService;
 import com.idat.laterraza.service.IUsuarioService;
 import com.idat.laterraza.serviceR.UsuarioServiceIm;
 
@@ -26,6 +27,8 @@ public class usuarioController {
 	
 	@Autowired
 	private UsuarioServiceIm userService;
+	@Autowired
+	private ICabeceraVentaService cabeceraService;
 	
 	//LISTAR USUARIOS
 	@GetMapping("/usuarios")
@@ -62,6 +65,7 @@ public class usuarioController {
 	@PostMapping("/usuarionew")
 	public Usuario usuarionew (@RequestBody Usuario usuario) {
 		usuarioService.save(usuario);
+		
 		return usuarioService.findById(usuario.getIdUsuario());
 	}
 	
