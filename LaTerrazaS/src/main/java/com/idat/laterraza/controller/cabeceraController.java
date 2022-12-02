@@ -101,6 +101,20 @@ public class cabeceraController {
 		
 	}
 	
+	//CAMBIAR ESTADO DE CARRITO A VENTA
+	@PutMapping("/venderCabecera/{idCab}")
+	public void vender(@PathVariable Long idCab,@RequestBody CabeceraVenta cabecera) {
+		CabeceraVenta cabe=cabeceraService.findById(idCab);
+		System.out.println("====================================");
+		System.out.println(cabe.getUsuario().getIdUsuario()+"       "+idCab);
+
+		System.out.println("====================================");
+
+		cabeService.venderCabe(idCab,cabe.getUsuario().getIdUsuario());
+		cabeceraregister(cabe.getUsuario().getIdUsuario());
+		
+	}
+	
 	
 	
 	

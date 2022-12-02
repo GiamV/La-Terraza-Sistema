@@ -22,5 +22,9 @@ public class CabeVServiceIm {
 		return CabeceraRepo.getCabeidUser(coduser);
 	}
 	
+	public void venderCabe(Long codcab,Long xcoduser) {
+		CabeceraRepo.venderCabe(codcab,xcoduser);
+	}
+	
 
 }

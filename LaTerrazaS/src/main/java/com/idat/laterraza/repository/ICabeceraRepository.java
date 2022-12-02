@@ -16,6 +16,9 @@ public interface ICabeceraRepository extends JpaRepository<CabeceraVenta, Long> 
 	
 	@Query(value= "{call consultar_cab(:xcoduser)}",nativeQuery=true)
 	CabeceraVenta getCabeidUser(@Param("xcoduser")Long xcoduser);
+	
+	@Query(value="{call CompraHecha (:xcodcab,:xcoduser)}",nativeQuery=true)
+	void venderCabe(@Param("xcodcab")Long xcodcab,@Param("xcoduser")Long xcoduser);
 
 }
 
