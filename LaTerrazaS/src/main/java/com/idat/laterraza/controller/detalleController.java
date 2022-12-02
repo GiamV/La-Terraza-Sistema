@@ -114,7 +114,9 @@ public class detalleController {
 	//ELIMINAR DETALLE DE VENTA
 	@DeleteMapping("detalleCarritodelete/{id}")
 	public void deleteCarrito(@PathVariable Long id) {
+		Long idDet=detalleService.findById(id).getCabecera().getIdCabecera();
 		detalleService.eliminarDetalleVenta(id);
+		actualizarCabecera(idDet);
 	}
 	
 
