@@ -59,6 +59,7 @@ public class productoController {
 		productoActual.setProducto(producto.getProducto());
 		productoActual.setCategoria(producto.getCategoria());
 		productoActual.setEstado(producto.getEstado());
+		productoActual.setDescripcion(producto.getDescripcion());
 		productoActual.setImagen(producto.getImagen());
 		productoActual.setPrecio(producto.getPrecio());
 	

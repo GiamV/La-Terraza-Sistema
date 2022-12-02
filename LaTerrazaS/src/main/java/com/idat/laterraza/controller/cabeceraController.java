@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.idat.laterraza.entity.CabeceraVenta;
 import com.idat.laterraza.service.ICabeceraVentaService;
-import com.idat.laterraza.service.ICabeceraVentaServiceImpl;
+import com.idat.laterraza.serviceR.CabeVServiceIm;
+
 
 @CrossOrigin(origins= {"http://localhost/4200"})
 @RestController
@@ -24,6 +25,9 @@ public class cabeceraController {
 
 	@Autowired
 	private ICabeceraVentaService cabeceraService;
+	@Autowired
+	private CabeVServiceIm cabeService;
+	
 	
 	//LISTAR CABECERAS DE VENTA
 	@GetMapping("/cabeceras")
@@ -43,6 +47,18 @@ public class cabeceraController {
 		cabeceraService.save(cabecera);
 		return cabeceraService.findById(cabecera.getIdCabecera()); 
 	}
+	
+	//CREAR NUEVO CABECERA Carrito
+		@PostMapping("/cabeceraregistro/{id}")
+		public CabeceraVenta cabeceraregister(@PathVariable Long id) {
+			return cabeService.saveCabecera(id);
+		}
+	
+		//BUSCAR CABECERA POR ID
+		@GetMapping("/cabeceraidu/{id}")
+		public CabeceraVenta getbyidUser (@PathVariable Long id) {
+			return cabeService.getCabe(id);
+		}
 	
 	//ACTUALIZAR CABECERA
 	@PutMapping("/cabeceraupdate/{id}")
@@ -84,6 +100,8 @@ public class cabeceraController {
 		return cabe;
 		
 	}
+	
+	
 	
 	
 
