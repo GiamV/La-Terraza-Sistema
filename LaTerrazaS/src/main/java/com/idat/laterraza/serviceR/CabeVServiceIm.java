@@ -1,12 +1,15 @@
 package com.idat.laterraza.serviceR;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.idat.laterraza.entity.CabeceraVenta;
 
 import com.idat.laterraza.repository.ICabeceraRepository;
+
 
 
 @Service
@@ -24,6 +27,11 @@ public class CabeVServiceIm {
 	
 	public void venderCabe(Long codcab,Long xcoduser) {
 		CabeceraRepo.venderCabe(codcab,xcoduser);
+	}
+
+	
+	public List<CabeceraVenta> findByCaU(Long codu) {
+		return (List<CabeceraVenta>) CabeceraRepo.findByUV(codu);
 	}
 	
 

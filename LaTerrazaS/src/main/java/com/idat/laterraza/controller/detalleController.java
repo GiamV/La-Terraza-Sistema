@@ -19,6 +19,7 @@ import com.idat.laterraza.entity.DetalleVenta;
 import com.idat.laterraza.service.ICabeceraVentaService;
 import com.idat.laterraza.service.IDetalleVentaService;
 import com.idat.laterraza.service.IUsuarioService;
+import com.idat.laterraza.serviceR.DetaVServiceIm;
 
 @CrossOrigin(origins= {"http://localhost/4200"})
 @RestController
@@ -33,6 +34,9 @@ public class detalleController {
 	
 	@Autowired
 	private IUsuarioService usuarioService;
+	
+	@Autowired
+	private DetaVServiceIm detaService;
 	
 	
 	//LISTAR DETALLES
@@ -135,6 +139,10 @@ public class detalleController {
 		cabecera.setNeto(bruto+cabecera.getIgv());
 		cabeceraService.save(cabecera);
 		
+	}
+	@GetMapping("/detallescliente/{idCab}")
+	public List<DetalleVenta> listarCliente(@PathVariable Long idCab){
+		return detaService.findByCaU(idCab);
 	}
 
 }

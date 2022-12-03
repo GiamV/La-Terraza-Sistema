@@ -115,6 +115,11 @@ public class cabeceraController {
 		
 	}
 	
+	@GetMapping("/cabeceracliente/{idUser}")
+	public List<CabeceraVenta> listarCliente(@PathVariable Long idUser){
+		return cabeService.findByCaU(idUser);
+	}
+	
 	
 	
 	
