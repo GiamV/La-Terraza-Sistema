@@ -24,6 +24,9 @@ public interface ICabeceraRepository extends JpaRepository<CabeceraVenta, Long> 
 	
 	@Query(value= "{call consultaventa(:xcoduser)}",nativeQuery=true)
 	List<CabeceraVenta> findByUV(@Param("xcoduser")Long xcoduser);
+	
+	@Query(value= "{call consultacabv()}",nativeQuery=true)
+	List<CabeceraVenta> ListCabV();
 
 }
 

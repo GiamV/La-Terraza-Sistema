@@ -120,6 +120,11 @@ public class cabeceraController {
 		return cabeService.findByCaU(idUser);
 	}
 	
+	@GetMapping("/cabeceratodos")
+	public List<CabeceraVenta> listarTodosC(){
+		return cabeService.ListCabV();
+	}
+	
 	
 	
 	

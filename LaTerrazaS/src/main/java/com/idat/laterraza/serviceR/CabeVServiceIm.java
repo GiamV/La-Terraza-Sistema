@@ -34,5 +34,9 @@ public class CabeVServiceIm {
 		return (List<CabeceraVenta>) CabeceraRepo.findByUV(codu);
 	}
 	
+	public List<CabeceraVenta> ListCabV() {
+		return (List<CabeceraVenta>) CabeceraRepo.ListCabV();
+	}
+	
 
 }
