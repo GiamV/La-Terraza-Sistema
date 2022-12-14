@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.idat.laterraza.entity.Usuario;
-import com.idat.laterraza.service.ICabeceraVentaService;
+
 import com.idat.laterraza.service.IUsuarioService;
 import com.idat.laterraza.serviceR.UsuarioServiceIm;
 
@@ -27,8 +27,7 @@ public class usuarioController {
 	
 	@Autowired
 	private UsuarioServiceIm userService;
-	@Autowired
-	private ICabeceraVentaService cabeceraService;
+
 	
 	//LISTAR USUARIOS
 	@GetMapping("/usuarios")
@@ -90,6 +89,14 @@ public class usuarioController {
 	@DeleteMapping("/usuariodelete/{id}")
 	public void delete(@PathVariable Long id) {
 		usuarioService.eliminarUsuario(id);
+	}
+	
+	@DeleteMapping("/usuarioestado/{id}")
+	public void deleteestado(@PathVariable Long id) {
+		Usuario usuarioActual=usuarioService.findById(id);
+		usuarioActual.setEstado(0);
+		usuarioService.save(usuarioActual);
+		
 	}
 	
 }

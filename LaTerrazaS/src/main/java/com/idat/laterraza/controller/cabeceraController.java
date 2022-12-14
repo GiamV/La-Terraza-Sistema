@@ -125,6 +125,14 @@ public class cabeceraController {
 		return cabeService.ListCabV();
 	}
 	
+	//ELIMINAR CABECERA
+		@DeleteMapping("/cabeceraestado/{id}")
+		public void deleteestado(@PathVariable Long id) {
+			CabeceraVenta cabeceraActual=cabeceraService.findById(id);
+			cabeceraActual.setEstado(0);
+			cabeceraService.save(cabeceraActual);
+		}
+	
 	
 	
 	

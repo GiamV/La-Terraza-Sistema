@@ -61,4 +61,12 @@ public class categoriaController {
 		categoriaService.eliminarCategoria(id);
 	}
 	
+	@DeleteMapping("/categoriaestado/{id}")
+	public void deleteestado(@PathVariable Long id) {
+		Categoria categoriaActual=categoriaService.findById(id);
+		categoriaActual.setEstado(0);
+		categoriaService.save(categoriaActual);
+		
+	}
+	
 }

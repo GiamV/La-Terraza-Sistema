@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.idat.laterraza.entity.Categoria;
 import com.idat.laterraza.entity.Producto;
 import com.idat.laterraza.service.IProductoService;
 import com.idat.laterraza.serviceR.CategoriaServiceIm;
@@ -71,6 +72,13 @@ public class productoController {
 	@DeleteMapping("/productodelete/{id}")
 	public void delete(@PathVariable Long id) {
 		productoService.eliminarProducto(id);
+	}
+	
+	@DeleteMapping("/productoestado/{id}")
+	public void deleteestado(@PathVariable Long id) {
+		Producto productoActual=productoService.findById(id);
+		productoActual.setEstado(0);
+		productoService.save(productoActual);
 	}
 	
 	

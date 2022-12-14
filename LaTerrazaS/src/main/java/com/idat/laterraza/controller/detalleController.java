@@ -57,7 +57,7 @@ public class detalleController {
 		detalleService.save(detalle);
 		
 		CabeceraVenta cabe=cabeceraService.findById(detalle.getCabecera().getIdCabecera());
-		actualizarCabecera(cabe.getIdCabecera());
+		
 		
 		return detalleService.findById(detalle.getIdDetalleVenta()); 
 	}
@@ -143,6 +143,13 @@ public class detalleController {
 	@GetMapping("/detallescliente/{idCab}")
 	public List<DetalleVenta> listarCliente(@PathVariable Long idCab){
 		return detaService.findByCaU(idCab);
+	}
+	
+	@DeleteMapping("detalleestado/{id}")
+	public void deleteestado(@PathVariable Long id) {
+		DetalleVenta detalleActual=detalleService.findById(id);
+		detalleActual.setEstado(0);
+		detalleService.save(detalleActual);
 	}
 
 }
