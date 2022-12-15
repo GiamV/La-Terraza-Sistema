@@ -1,6 +1,6 @@
+
 package com.idat.laterraza.test;
 
-import com.idat.laterraza.dao.ICategoriaDao;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
@@ -15,28 +15,28 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
-import com.idat.laterraza.entity.Categoria;
-import com.idat.laterraza.service.ICategoriaService;
-import com.idat.laterraza.service.ICategoriaServiceImpl;
+import com.idat.laterraza.entity.Rol;
+
+import com.idat.laterraza.dao.IRolDao;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace=Replace.NONE)
-public class CategoriaJpaTest {
-	
-    private static Categoria objcategoria;
-	
+public class RolJpaTest {
+    
+    private static Rol objrol;
+    
     @Autowired
-    private ICategoriaDao categoriaService;
-	
+    private IRolDao rolService;  
+    
     @BeforeAll
     public static void Inicio(){
-        objcategoria= new Categoria();
+        objrol= new Rol();
         System.out.print("BeforeAll --> Inicio");
     }
     
     @AfterAll
     public static void Final(){
-        objcategoria= null;
+        objrol= null;
         System.out.println("AfterAll --> Final()");
     }
     
@@ -48,7 +48,7 @@ public class CategoriaJpaTest {
     
     @Test 
     public void findAllTest(){
-        Iterable<Categoria> categoria = categoriaService.findAll();
+        Iterable<Rol> categoria = rolService.findAll();
         assertNotNull(categoria);
     }
     
@@ -56,42 +56,38 @@ public class CategoriaJpaTest {
     @Test 
     public void findById(){
         long id=1;
-        Optional<Categoria> categoria = categoriaService.findById(id);
+        Optional<Rol> categoria = rolService.findById(id);
         assertNotNull(categoria);
     }
     
     @Test 
     @Rollback(false)
     public void addTest(){
-        objcategoria.setCategoria("Ropa de Niño");
-        objcategoria.setEstado(1);
-        Categoria categoria = categoriaService.save(objcategoria);
-        assertNotNull(categoria);
+        objrol.setIdRol(Long.valueOf(1));
+        objrol.setRol("usuario");
+
+        Rol rol = rolService.save(objrol);
+        assertNotNull(rol);
     }
     
     @Test 
     @Rollback(false)
     public void updateTest(){
-        objcategoria.setIdCategoria(Long.valueOf(2));
-        objcategoria.setCategoria("verduras");
-        objcategoria.setEstado(1);
-        Categoria categoria = categoriaService.save(objcategoria);
-        assertNotNull(categoria);
+        objrol.setIdRol(Long.valueOf(1));
+        objrol.setRol("usuario");
+
+        Rol rol = rolService.save(objrol);
+        assertNotNull(rol);
     }
     
     @Test 
     @Rollback(false)
     public void deleteTest(){
-        objcategoria.setIdCategoria(Long.valueOf(2));
-        objcategoria.setCategoria("verduras");
-        objcategoria.setEstado(0);
-        Categoria categoria = categoriaService.save(objcategoria);
-        assertNotNull(categoria);
+        objrol.setIdRol(Long.valueOf(1));
+        objrol.setRol("usuario");
+
+        Rol rol = rolService.save(objrol);
+        assertNotNull(rol);
     }
-        
-
     
-    
-    
-
 }
